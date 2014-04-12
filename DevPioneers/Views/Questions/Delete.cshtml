@@ -1,0 +1,47 @@
+﻿@model DevPioneers.Models.QUESTION
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MetroLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>QUESTION</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QuestionTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QuestionBody)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionBody)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AskedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AskedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AskedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AskedBy)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

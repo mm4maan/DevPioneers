@@ -1,0 +1,60 @@
+﻿@model DevPioneers.Models.QUESTION
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MetroLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ask a Question</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionTitle)
+            @Html.ValidationMessageFor(model => model.QuestionTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionBody)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionBody)
+            @Html.ValidationMessageFor(model => model.QuestionBody)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AskedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AskedDate)
+            @Html.ValidationMessageFor(model => model.AskedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AskedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AskedBy)
+            @Html.ValidationMessageFor(model => model.AskedBy)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

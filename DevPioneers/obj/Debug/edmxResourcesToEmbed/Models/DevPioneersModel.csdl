@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Dp_12APR2014Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="DPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ANSWERS" EntityType="Dp_12APR2014Model.ANSWER" />
+    <EntitySet Name="COMPANies" EntityType="Dp_12APR2014Model.COMPANY" />
+    <EntitySet Name="ITEMS" EntityType="Dp_12APR2014Model.ITEM" />
+    <EntitySet Name="QUESTIONS" EntityType="Dp_12APR2014Model.QUESTION" />
+    <EntitySet Name="SETUP_PACKAGES" EntityType="Dp_12APR2014Model.SETUP_PACKAGES" />
+    <EntitySet Name="SETUP_PRODUCTS" EntityType="Dp_12APR2014Model.SETUP_PRODUCTS" />
+    <EntitySet Name="SETUP_SCREENS" EntityType="Dp_12APR2014Model.SETUP_SCREENS" />
+    <EntitySet Name="sysdiagrams" EntityType="Dp_12APR2014Model.sysdiagram" />
+    <EntitySet Name="USER_DEFINTIONS" EntityType="Dp_12APR2014Model.USER_DEFINTIONS" />
+    <EntitySet Name="USER_GROUPS" EntityType="Dp_12APR2014Model.USER_GROUPS" />
+    <EntitySet Name="USER_SECURITY_LIST" EntityType="Dp_12APR2014Model.USER_SECURITY_LIST" />
+    <EntitySet Name="USER_SUBSCRIPTION" EntityType="Dp_12APR2014Model.USER_SUBSCRIPTION" />
+    <EntitySet Name="USER_TRANSACTIONS" EntityType="Dp_12APR2014Model.USER_TRANSACTIONS" />
+    <AssociationSet Name="FK_Answers_Questions" Association="Dp_12APR2014Model.FK_Answers_Questions">
+      <End Role="QUESTION" EntitySet="QUESTIONS" />
+      <End Role="ANSWER" EntitySet="ANSWERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITEMS_COMPANY" Association="Dp_12APR2014Model.FK_ITEMS_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="ITEM" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SETUP_PACKAGES_COMPANY" Association="Dp_12APR2014Model.FK_SETUP_PACKAGES_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="SETUP_PACKAGES" EntitySet="SETUP_PACKAGES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SETUP_SCREENS_COMPANY" Association="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="SETUP_SCREENS" EntitySet="SETUP_SCREENS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SETUP_SCREENS_COMPANY1" Association="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY1">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="SETUP_SCREENS" EntitySet="SETUP_SCREENS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_DEFINTION_COMPANY" Association="Dp_12APR2014Model.FK_USER_DEFINTION_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="USER_DEFINTIONS" EntitySet="USER_DEFINTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_GROUPS_COMPANY" Association="Dp_12APR2014Model.FK_USER_GROUPS_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="USER_GROUPS" EntitySet="USER_GROUPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_SECURITY_LIST_COMPANY" Association="Dp_12APR2014Model.FK_USER_SECURITY_LIST_COMPANY">
+      <End Role="COMPANY" EntitySet="COMPANies" />
+      <End Role="USER_SECURITY_LIST" EntitySet="USER_SECURITY_LIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ITEMS_USER_DEFINTION" Association="Dp_12APR2014Model.FK_ITEMS_USER_DEFINTION">
+      <End Role="USER_DEFINTIONS" EntitySet="USER_DEFINTIONS" />
+      <End Role="ITEM" EntitySet="ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_DEFINTION_USER_GROUPS" Association="Dp_12APR2014Model.FK_USER_DEFINTION_USER_GROUPS">
+      <End Role="USER_GROUPS" EntitySet="USER_GROUPS" />
+      <End Role="USER_DEFINTIONS" EntitySet="USER_DEFINTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USER_SECURITY_USER_DEFINTION" Association="Dp_12APR2014Model.FK_USER_SECURITY_USER_DEFINTION">
+      <End Role="USER_DEFINTIONS" EntitySet="USER_DEFINTIONS" />
+      <End Role="USER_SECURITY_LIST" EntitySet="USER_SECURITY_LIST" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ANSWER">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="AnswerBody" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="AnswerDate" Precision="3" />
+    <Property Type="Int32" Name="AnsweredBy" />
+    <Property Type="Int32" Name="QuestionId" Nullable="false" />
+    <Property Type="Binary" Name="Attachment" MaxLength="Max" FixedLength="false" />
+    <Property Type="Binary" Name="Snapshot" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="QUESTION" Relationship="Dp_12APR2014Model.FK_Answers_Questions" FromRole="ANSWER" ToRole="QUESTION" />
+  </EntityType>
+  <EntityType Name="COMPANY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="COMPANY_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <NavigationProperty Name="ITEMS" Relationship="Dp_12APR2014Model.FK_ITEMS_COMPANY" FromRole="COMPANY" ToRole="ITEM" />
+    <NavigationProperty Name="SETUP_PACKAGES" Relationship="Dp_12APR2014Model.FK_SETUP_PACKAGES_COMPANY" FromRole="COMPANY" ToRole="SETUP_PACKAGES" />
+    <NavigationProperty Name="SETUP_SCREENS" Relationship="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY" FromRole="COMPANY" ToRole="SETUP_SCREENS" />
+    <NavigationProperty Name="SETUP_SCREENS1" Relationship="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY1" FromRole="COMPANY" ToRole="SETUP_SCREENS" />
+    <NavigationProperty Name="USER_DEFINTIONS" Relationship="Dp_12APR2014Model.FK_USER_DEFINTION_COMPANY" FromRole="COMPANY" ToRole="USER_DEFINTIONS" />
+    <NavigationProperty Name="USER_GROUPS" Relationship="Dp_12APR2014Model.FK_USER_GROUPS_COMPANY" FromRole="COMPANY" ToRole="USER_GROUPS" />
+    <NavigationProperty Name="USER_SECURITY_LIST" Relationship="Dp_12APR2014Model.FK_USER_SECURITY_LIST_COMPANY" FromRole="COMPANY" ToRole="USER_SECURITY_LIST" />
+  </EntityType>
+  <EntityType Name="ITEM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ITEM_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SCREEN_ID" Nullable="false" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_ITEMS_COMPANY" FromRole="ITEM" ToRole="COMPANY" />
+    <NavigationProperty Name="USER_DEFINTIONS" Relationship="Dp_12APR2014Model.FK_ITEMS_USER_DEFINTION" FromRole="ITEM" ToRole="USER_DEFINTIONS" />
+  </EntityType>
+  <EntityType Name="QUESTION">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="QuestionTitle" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="QuestionBody" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="AskedDate" Precision="3" />
+    <Property Type="Int32" Name="AskedBy" Nullable="false" />
+    <Property Type="Binary" Name="Attachment" MaxLength="Max" FixedLength="false" />
+    <Property Type="Binary" Name="Snapshot" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="ANSWER" Relationship="Dp_12APR2014Model.FK_Answers_Questions" FromRole="QUESTION" ToRole="ANSWER" />
+  </EntityType>
+  <EntityType Name="SETUP_PACKAGES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PACKAGE_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="PRICE" Precision="18" Scale="5" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_SETUP_PACKAGES_COMPANY" FromRole="SETUP_PACKAGES" ToRole="COMPANY" />
+  </EntityType>
+  <EntityType Name="SETUP_PRODUCTS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PRODUCT_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ACTIVE_IND" />
+    <Property Type="Int32" Name="BRAND_ID" />
+  </EntityType>
+  <EntityType Name="SETUP_SCREENS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="SCREEN_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY" FromRole="SETUP_SCREENS" ToRole="COMPANY" />
+    <NavigationProperty Name="COMPANY1" Relationship="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY1" FromRole="SETUP_SCREENS" ToRole="COMPANY" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USER_DEFINTIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PASSWORD" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <Property Type="String" Name="EMAIL" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="USER_GROUP_ID" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <Property Type="Int32" Name="LANGUAGE_ID" Nullable="false" />
+    <Property Type="String" Name="ADDRESS_1" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ADDRESS_2" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CONTACT_NO" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="POSTAL_CODE" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="COUNTRY_CODE" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CITY" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_USER_DEFINTION_COMPANY" FromRole="USER_DEFINTIONS" ToRole="COMPANY" />
+    <NavigationProperty Name="ITEMS" Relationship="Dp_12APR2014Model.FK_ITEMS_USER_DEFINTION" FromRole="USER_DEFINTIONS" ToRole="ITEM" />
+    <NavigationProperty Name="USER_GROUPS" Relationship="Dp_12APR2014Model.FK_USER_DEFINTION_USER_GROUPS" FromRole="USER_DEFINTIONS" ToRole="USER_GROUPS" />
+    <NavigationProperty Name="USER_SECURITY_LIST" Relationship="Dp_12APR2014Model.FK_USER_SECURITY_USER_DEFINTION" FromRole="USER_DEFINTIONS" ToRole="USER_SECURITY_LIST" />
+  </EntityType>
+  <EntityType Name="USER_GROUPS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PRIVILEGE_ID" Nullable="false" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_USER_GROUPS_COMPANY" FromRole="USER_GROUPS" ToRole="COMPANY" />
+    <NavigationProperty Name="USER_DEFINTIONS" Relationship="Dp_12APR2014Model.FK_USER_DEFINTION_USER_GROUPS" FromRole="USER_GROUPS" ToRole="USER_DEFINTIONS" />
+  </EntityType>
+  <EntityType Name="USER_SECURITY_LIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ITEM_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SCREEN_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="Int32" Name="COMPANY_ID" />
+    <NavigationProperty Name="COMPANY" Relationship="Dp_12APR2014Model.FK_USER_SECURITY_LIST_COMPANY" FromRole="USER_SECURITY_LIST" ToRole="COMPANY" />
+    <NavigationProperty Name="USER_DEFINTIONS" Relationship="Dp_12APR2014Model.FK_USER_SECURITY_USER_DEFINTION" FromRole="USER_SECURITY_LIST" ToRole="USER_DEFINTIONS" />
+  </EntityType>
+  <EntityType Name="USER_SUBSCRIPTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="Int32" Name="PACKAGE_ID" Nullable="false" />
+    <Property Type="DateTime" Name="ACTIVATION_DATE" Precision="3" />
+    <Property Type="DateTime" Name="EXPIRY_DATE" Precision="3" />
+    <Property Type="Boolean" Name="ACTIVE_IND" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_TRANSACTIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="USER_ID" Nullable="false" />
+    <Property Type="DateTime" Name="TRANSACTION_DATE" Precision="3" />
+    <Property Type="Decimal" Name="TOTAL_AMOUNT" Precision="18" Scale="5" />
+    <Property Type="Int32" Name="PACKAGE_ID" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Answers_Questions">
+    <End Type="Dp_12APR2014Model.QUESTION" Role="QUESTION" Multiplicity="1" />
+    <End Type="Dp_12APR2014Model.ANSWER" Role="ANSWER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTION">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ANSWER">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITEMS_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.ITEM" Role="ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITEM">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SETUP_PACKAGES_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.SETUP_PACKAGES" Role="SETUP_PACKAGES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SETUP_PACKAGES">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SETUP_SCREENS_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.SETUP_SCREENS" Role="SETUP_SCREENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SETUP_SCREENS">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SETUP_SCREENS_COMPANY1">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.SETUP_SCREENS" Role="SETUP_SCREENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SETUP_SCREENS">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_DEFINTION_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.USER_DEFINTIONS" Role="USER_DEFINTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_DEFINTIONS">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_GROUPS_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.USER_GROUPS" Role="USER_GROUPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_GROUPS">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_SECURITY_LIST_COMPANY">
+    <End Type="Dp_12APR2014Model.COMPANY" Role="COMPANY" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.USER_SECURITY_LIST" Role="USER_SECURITY_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_SECURITY_LIST">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ITEMS_USER_DEFINTION">
+    <End Type="Dp_12APR2014Model.USER_DEFINTIONS" Role="USER_DEFINTIONS" Multiplicity="1" />
+    <End Type="Dp_12APR2014Model.ITEM" Role="ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_DEFINTIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ITEM">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_DEFINTION_USER_GROUPS">
+    <End Type="Dp_12APR2014Model.USER_GROUPS" Role="USER_GROUPS" Multiplicity="0..1" />
+    <End Type="Dp_12APR2014Model.USER_DEFINTIONS" Role="USER_DEFINTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_GROUPS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_DEFINTIONS">
+        <PropertyRef Name="USER_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USER_SECURITY_USER_DEFINTION">
+    <End Type="Dp_12APR2014Model.USER_DEFINTIONS" Role="USER_DEFINTIONS" Multiplicity="1" />
+    <End Type="Dp_12APR2014Model.USER_SECURITY_LIST" Role="USER_SECURITY_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_DEFINTIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_SECURITY_LIST">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

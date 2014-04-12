@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a745546a8d0e49de9f2a196568731d40" Name="Diagram1">
+        <EntityTypeShape EntityType="Dp_12APR2014Model.ANSWER" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.COMPANY" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.ITEM" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.QUESTION" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.SETUP_PACKAGES" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.SETUP_PRODUCTS" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.SETUP_SCREENS" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.USER_DEFINTIONS" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.USER_GROUPS" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.USER_SECURITY_LIST" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.USER_SUBSCRIPTION" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Dp_12APR2014Model.USER_TRANSACTIONS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_ITEMS_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_SETUP_PACKAGES_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_SETUP_SCREENS_COMPANY1" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_USER_DEFINTION_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_USER_GROUPS_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_USER_SECURITY_LIST_COMPANY" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_ITEMS_USER_DEFINTION" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_USER_DEFINTION_USER_GROUPS" ManuallyRouted="false" />
+        <AssociationConnector Association="Dp_12APR2014Model.FK_USER_SECURITY_USER_DEFINTION" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
